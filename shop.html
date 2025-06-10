@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop - AgroMarket</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-white text-gray-800">
+
+  <!-- Navbar with Logo -->
+  <nav class="bg-green-700 text-white px-6 py-4 shadow-md">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="index.html" class="flex items-center space-x-2">
+        <img src="images/logo.png" alt="AgroMarket Logo" class="h-10 w-10 object-contain">
+        <span class="text-2xl font-bold">AgroMarket</span>
+      </a>
+      <div class="space-x-4">
+        <a href="index.html" class="hover:underline">Accueil</a>
+        <a href="shop.html" class="hover:underline">Boutique</a>
+        <a href="about.html" class="hover:underline">À propos</a>
+        <a href="contact.html" class="hover:underline">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Product Section -->
+  <div class="max-w-7xl mx-auto p-6">
+    <h1 class="text-3xl font-bold mb-6 text-center">BOUTIQUE</h1>
+    <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </div>
+
+  <!-- Product Script -->
+  <script>
+    const products = [
+      { name: 'pH Mètre du sol 4-en-1', price: 12500, img: 'phsol.jpg' },
+      { name: 'Fertilité 4-en-1', price: 24900, img: 'ferti.jpg' },
+      { name: 'NPK', price: 34900, img: 'npk.jpg' },
+      { name: 'TDS/EC pour eau', price: 10000, img: 'tdsec.jpg' },
+      { name: 'TDS/EC pour eau', price: 10000, img: 'tdsec.jpg' },
+      { name: 'pH Mètre des liquides', price: 10000, img: 'pheau.jpg' }
+    ];
+
+    const whatsappNumber = '237671357556'; // Replace with your actual WhatsApp number
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid = document.getElementById('product-grid');
+
+      products.forEach((p, index) => {
+        const productPage = `product${index + 1}.html`;
+        const message = encodeURIComponent(
+          `Bonjour AgroMarket, je suis intéressé par le produit suivant :\n\n- Nom : ${p.name}\n- Prix : ${p.price} FCFA\n\nMerci de me donner plus d’informations.`
+        );
+        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+        const div = document.createElement('div');
+        div.className = "bg-white shadow p-4 rounded";
+
+        div.innerHTML = `
+          <img src="images/${p.img}" class="w-full h-40 object-cover mb-3" />
+          <h3 class="font-semibold text-lg">${p.name}</h3>
+          <p>${p.price} FCFA</p>
+          <a href="${whatsappURL}" target="_blank" class="mt-2 inline-block bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700">
+            Commander via WhatsApp
+          </a>
+          <a href="${productPage}" class="ml-2 mt-2 inline-block text-sm text-green-700 underline">En savoir plus</a>
+        `;
+
+        grid.appendChild(div);
+      });
+    });
+  </script>
+</body>
+</html>
