@@ -3,26 +3,235 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AgroMarket - Home</title>
+  <title>Shop - AgroMarket</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="font-sans bg-white text-gray-800">
-  <!-- Hero -->
-  <section class="bg-green-100 py-20 px-4 text-center">
-    <h1 class="text-4xl font-bold mb-4">Grow with Confidence 🌱</h1>
-    <p class="text-lg max-w-xl mx-auto mb-6">High-quality seeds, tools, and accessories for thriving farms and gardens.</p>
-    <a href="shop.html" class="bg-green-600 text-white py-2 px-6 rounded hover:bg-green-700 transition">Shop Now</a>
-  </section>
+<body class="bg-white text-gray-800">
 
-  <!-- Featured Categories -->
-  <section class="py-12 px-4">
-    <h2 class="text-2xl font-semibold text-center mb-8">Featured Categories</h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-      <div class="bg-white shadow p-4 rounded text-center hover:shadow-lg transition">Seeds</div>
-      <div class="bg-white shadow p-4 rounded text-center hover:shadow-lg transition">Fertilizers</div>
-      <div class="bg-white shadow p-4 rounded text-center hover:shadow-lg transition">Tools</div>
-      <div class="bg-white shadow p-4 rounded text-center hover:shadow-lg transition">Accessories</div>
-    </div>
-  </section>
+  
+<!-- Navbar with Centered Logo and Sticky Behavior -->
+<nav class="bg-green-700 text-white shadow-md sticky top-0 z-50" style="padding: 0.8rem 0; background-color: #333333 !important;">
+  <div class="max-w-7xl mx-auto flex flex-col items-center justify-center text-center">
+    
+    <!-- Logo and Brand Name -->
+    <a href="index.html" class="flex flex-col items-center space-y-2">
+      <img src="images/logo.png" alt="AgroMarket Logo"
+           style="height: 40px; width: auto;" class="object-contain" />
+    </a>
+  </div>
+</nav>
+
+
+
+  <!-- Product Section -->
+  <div class="max-w-7xl mx-auto p-6">
+    <h1 class="text-3xl font-bold mb-6 text-center">Bienvenue chez AgroMarket!</h1>
+    <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </div>
+
+  <!-- Product Script -->
+  <script>
+    const products = [
+      { name: 'pH Mètre du sol 4-en-1', price: 12500, img: 'phsol.jpg' },
+      { name: 'Fertilité 4-en-1', price: 24900, img: 'ferti.jpg' },
+      { name: 'NPK', price: 34900, img: 'npk.jpg' },
+      { name: 'TDS/EC pour eau', price: 10000, img: 'tdsec.jpg' },
+      { name: 'TDS/EC pour eau', price: 10000, img: 'tdsec.jpg' },
+      { name: 'pH Mètre des liquides', price: 10000, img: 'pheau.jpg' }
+    ];
+
+    const whatsappNumber = '237671357556'; // Replace with your actual WhatsApp number
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid = document.getElementById('product-grid');
+
+      products.forEach((p, index) => {
+        const productPage = `product${index + 1}.html`;
+        const message = encodeURIComponent(
+          `Salut AgroMarket, je suis intéressé par le produit suivant :\n\n- Nom : ${p.name}\n- Prix : ${p.price} FCFA\n\nMerci de me donner plus d’informations.\n\nConsultez nous produits ici\nwww.agromarketcameroon.com`
+        );
+        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+        const div = document.createElement('div');
+        div.className = "bg-white shadow p-4 rounded";
+
+        div.innerHTML = `
+          <img src="images/${p.img}" class="w-full h-40 object-cover mb-3" />
+          <h3 class="font-semibold text-lg">${p.name}</h3>
+          <p>${p.price} FCFA</p>
+          <a href="${whatsappURL}" target="_blank" class="mt-2 inline-block bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700">
+            Commander via WhatsApp
+          </a>
+          <a href="${productPage}" class="ml-2 mt-2 inline-block text-sm text-green-700 underline">En savoir plus</a>
+        `;
+
+        grid.appendChild(div);
+      });
+    });
+  </script>
 </body>
+
+<footer class="custom-footer">
+  <div class="footer-container">
+    <!-- Footer Columns -->
+    <div class="footer-columns">
+      <!-- Column 1: Logo, Description, and Social Media -->
+      <div class="footer-column footer-logo-column">
+        <a href="/" class="footer-logo-link">
+          <img src="https://cdn.shopify.com/s/files/1/0627/2280/1754/files/Shopify_Footer_Logo.png?v=1733529467" alt="AgroMarket Logo" class="footer-logo">
+        </a>
+        <p class="footer-description">AgroMarket se consacre à fournir des équipements agricoles innovants et durables aux agriculteurs du monde entier..</p>
+        
+        <!-- Social Media Icons -->
+        <div class="social-media">
+          <a href="https://www.facebook.com/agromarket237"  target="_blank" rel="noopener noreferrer" class="social-icon">
+            <img src="https://cdn.shopify.com/s/files/1/0627/2280/1754/files/icons8-facebook-144.png?v=1733532221" alt="Facebook" />
+          </a>
+          <a href="https://www.instagram.com/agromarket237"  target="_blank" rel="noopener noreferrer" class="social-icon">
+            <img src="https://cdn.shopify.com/s/files/1/0627/2280/1754/files/icons8-instagram-144.png?v=1733532228" alt="Instagram" />
+          </a>
+        </div>
+        <p class="cta">Suivez nous</p>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p>© 2025 AgroMarket237. Tous droits réservés.</p><br>
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* Footer Styling */
+  .custom-footer {
+    background-color: #333;
+    padding: 40px 20px;
+    color: white;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .footer-columns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    width: 100%;
+  }
+
+  .footer-column {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .footer-logo-column {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-logo-link {
+    display: inline-block;
+  }
+
+  .footer-logo {
+    max-width: 200px; /* Larger size */
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .footer-description {
+    font-size: 14px;
+    line-height: 1.6;
+    color: white;
+    margin-bottom: 20px;
+  }
+
+  .social-media {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 5px;
+  }
+
+  .social-icon img {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s ease;
+  }
+
+  .social-icon img:hover {
+    transform: scale(1.1);
+  }
+
+  .cta {
+    font-size: 16px;
+    font-weight: bold;
+    color: #85a00f;
+  }
+
+  .footer-column h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-column ul li {
+    margin-bottom: 5px;
+  }
+
+  .footer-column ul li a {
+    text-decoration: none;
+    color: #85a00f;
+    transition: color 0.3s ease;
+  }
+
+  .footer-column ul li a:hover {
+    color: #c0d000;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .footer-bottom p {
+    margin: 0;
+    font-size: 14px;
+    color: white;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .footer-columns {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .footer-column {
+      min-width: unset;
+      text-align: center;
+    }
+
+    .footer-bottom {
+      margin-top: 20px;
+    }
+  }
+</style>
+
+
+
 </html>
