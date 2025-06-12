@@ -39,12 +39,12 @@
   <!-- Product Script -->
   <script>
     const products = [
-      { name: 'pH Mètre du sol 4-en-1', price: 12500, img: '4in1a.jpg' },
-      { name: 'Analyses Fertilité du sol 6-en-1', price: 24900, img: 'fertility1.jpg' },
+      { name: 'pH Mètre du sol 4-en-1', price: 12500, img: 'phs1.jpg' },
+      { name: 'Analyses Fertilité du sol 6-en-1', price: 24900, img: 'phf1.jpg' },
       { name: 'Analyses NPK du sol', price: 34900, img: 'npk1.jpg' },
-      { name: 'TDS/EC pour eau', price: 10000, img: 'tdsec2.jpg' },
-      { name: 'Humidimetre', price: 10000, img: 'hum2.jpg' },
-      { name: 'pH Mètre des liquides', price: 10000, img: 'phwt2.jpg' }
+      { name: 'TDS/EC pour eau', price: 10000, img: 'tdsec1.jpg' },
+      { name: 'Humidimetre', price: 10000, img: 'hum1.jpg' },
+      { name: 'pH Mètre des liquides', price: 10000, img: 'phwt1.jpg' }
     ];
 
     const whatsappNumber = '237671357556'; // Replace with your actual WhatsApp number
@@ -55,7 +55,7 @@
       products.forEach((p, index) => {
         const productPage = `product${index + 1}.html`;
         const message = encodeURIComponent(
-          `Salut AgroMarket, je veux acheter le produit suivant :\n- Nom : ${p.name}\n- Prix : ${p.price} FCFA.`
+          `Salut AgroMarket, je veux acheter le ${p.name}.\n- Prix : ${p.price} FCFA.`
         );
         const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
 
@@ -63,7 +63,7 @@
         div.className = "bg-white shadow p-4 rounded";
 
         div.innerHTML = `
-          <img src="images/${p.img}" class="w-80 h-80 object-cover mb-3" />
+          <img src="images/${p.img}" class="w-full h-40 object-cover mb-3" />
           <h3 class="font-semibold text-lg" style="font-family: 'Montserrat', sans-serif !important;">${p.name}</h3>
           <p style="font-family: 'Montserrat', sans-serif !important;">${p.price} FCFA</p>
           <a href="${whatsappURL}" target="_self" class="mt-2 inline-block bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700" style="background-color: #29AF3E; font-family: 'Montserrat', sans-serif !important; border-radius: 25px; margin-bottom: 15px;">
