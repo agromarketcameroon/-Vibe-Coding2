@@ -142,10 +142,14 @@ button { cursor: pointer; }
 ion-icon {
   pointer-events: none;
   --ionicon-stroke-width: 25px;
-}
+} 
+
+h1, h2, h3, h4, h5, h6, p {
+      font-family: 'Montserrat', sans-serif;
+    }
 
 html {
-  font-family: var(--ff-urbanist);
+  font-family: 'Montserrat', sans-serif;
   font-size: 10px;
   scroll-behavior: smooth;
 }

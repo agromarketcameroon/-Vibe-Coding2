@@ -5,8 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shop - AgroMarket</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="images/AMfavicon.svg" type="image/svg+xml">
 </head>
-<body class="bg-white text-gray-800">
+<body class="bg-white text-gray-800" style="background-color: rgb(223, 238, 222) !important;">
 
   
 <!-- Navbar with Centered Logo and Sticky Behavior -->
@@ -25,15 +32,15 @@
 
   <!-- Product Section -->
   <div class="max-w-7xl mx-auto p-6">
-    <h1 class="text-3xl font-bold mb-6 text-center">Bienvenue chez AgroMarket!</h1>
+    <h1 class="text-3xl font-bold mb-6 text-center" style="font-family: 'Montserrat', sans-serif !important;">Bienvenue chez AgroMarket!</h1>
     <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
   </div>
 
   <!-- Product Script -->
   <script>
     const products = [
-      { name: 'pH Mètre du sol 4-en-1', price: 12500, img: 'phs2b.jpg' },
-      { name: 'Analyses Fertilité du sol 6-en-1', price: 24900, img: 'phf2.jpg' },
+      { name: 'pH Mètre du sol 4-en-1', price: 12500, img: '4in1a.jpg' },
+      { name: 'Analyses Fertilité du sol 6-en-1', price: 24900, img: 'fertility1.jpg' },
       { name: 'Analyses NPK du sol', price: 34900, img: 'npk1.jpg' },
       { name: 'TDS/EC pour eau', price: 10000, img: 'tdsec2.jpg' },
       { name: 'Humidimetre', price: 10000, img: 'hum2.jpg' },
@@ -48,7 +55,7 @@
       products.forEach((p, index) => {
         const productPage = `product${index + 1}.html`;
         const message = encodeURIComponent(
-          `Salut AgroMarket, je suis intéressé par le produit suivant :\n- Nom : ${p.name}\n- Prix : ${p.price} FCFA.\n\nConsultez nous produits ici:\nwww.agromarketcameroon.com`
+          `Salut AgroMarket, je veux acheter le produit suivant :\n- Nom : ${p.name}\n- Prix : ${p.price} FCFA.`
         );
         const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
 
@@ -57,12 +64,14 @@
 
         div.innerHTML = `
           <img src="images/${p.img}" class="w-80 h-80 object-cover mb-3" />
-          <h3 class="font-semibold text-lg">${p.name}</h3>
-          <p>${p.price} FCFA</p>
-          <a href="${whatsappURL}" target="_blank" class="mt-2 inline-block bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700">
+          <h3 class="font-semibold text-lg" style="font-family: 'Montserrat', sans-serif !important;">${p.name}</h3>
+          <p style="font-family: 'Montserrat', sans-serif !important;">${p.price} FCFA</p>
+          <a href="${whatsappURL}" target="_self" class="mt-2 inline-block bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700" style="background-color: #29AF3E; font-family: 'Montserrat', sans-serif !important; border-radius: 25px; margin-bottom: 15px;">
             Commander via WhatsApp
           </a>
-          <a href="${productPage}" class="ml-2 mt-2 inline-block text-sm text-green-700 underline">En savoir plus</a>
+          <a href="${productPage}" target="_self" class="mt-2 inline-block bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700" style="background-color: #fa8e00; font-family: 'Montserrat', sans-serif !important; border-radius: 25px; margin: auto;">
+            En savoir plus
+          </a>
         `;
 
         grid.appendChild(div);
@@ -80,20 +89,10 @@
         <a href="/" class="footer-logo-link">
           <img src="https://cdn.shopify.com/s/files/1/0627/2280/1754/files/Shopify_Footer_Logo.png?v=1733529467" alt="AgroMarket Logo" class="footer-logo">
         </a>
-        <p class="footer-description" style="color: #85a00f;">AgroMarket se consacre à fournir des équipements agricoles innovants et durables aux agriculteurs du monde entier.</p>
-        <p>Tel: (+237) 671 327 556</p>
-        <p>Super U Bonamoussadi, Douala</p><br>
-        <!-- Social Media Icons -->
-        <div class="social-media">
-          <a href="https://www.facebook.com/agromarket237"  target="_blank" rel="noopener noreferrer" class="social-icon">
-            <img src="https://cdn.shopify.com/s/files/1/0627/2280/1754/files/icons8-facebook-144.png?v=1733532221" alt="Facebook" />
-          </a>
-          <a href="https://www.instagram.com/agromarket237"  target="_blank" rel="noopener noreferrer" class="social-icon">
-            <img src="https://cdn.shopify.com/s/files/1/0627/2280/1754/files/icons8-instagram-144.png?v=1733532228" alt="Instagram" />
-          </a>
-        </div>
-        <p class="cta">Suivez nous</p>
-        <p>© 2025 AgroMarket237. Tous droits réservés.</p><br>
+        <p class="footer-description" style="color: #85a00f; font-family: 'Montserrat', sans-serif !important; font-size: 18px;">AgroMarket se consacre à fournir des équipements agricoles innovants et durables aux agriculteurs du monde entier.</p>
+        <p style="font-family: 'Montserrat', sans-serif !important;">Tel: (+237) 671 327 556</p>
+        <p style="font-family: 'Montserrat', sans-serif !important;">Super U Bonamoussadi, Douala</p><br>
+        <p style="font-family: 'Montserrat', sans-serif !important; color: #85a00f;">© 2025 AgroMarket237. Tous droits réservés.</p><br>
     </div>
       </div>
     </div>
