@@ -125,7 +125,7 @@
   }
 
   function cycleToasts() {
-    const delay = Math.floor(Math.random() * 5000) + 1000; // Random delay: 1s to 5s
+    const delay = Math.floor(Math.random() * 7000) + 2000; // Random delay: 1s to 5s
     setTimeout(() => {
       const product = toastProducts[Math.floor(Math.random() * toastProducts.length)];
       showToast(product);
@@ -134,6 +134,29 @@
   }
 
   document.addEventListener('DOMContentLoaded', cycleToasts);
+</script>
+
+<script>
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+</script>
+
+<script>
+  document.addEventListener('keydown', function(e) {
+    // Disable F12
+    if (e.key === "F12") {
+      e.preventDefault();
+    }
+    // Disable Ctrl+Shift+I
+    if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+      e.preventDefault();
+    }
+    // Disable Ctrl+U (View source)
+    if (e.ctrlKey && e.key === 'u') {
+      e.preventDefault();
+    }
+  });
 </script>
 
 </body>

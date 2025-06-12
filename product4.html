@@ -307,6 +307,29 @@
   <-->
   <script src="js/product.js" defer></script>
 
+<script>
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+</script>
+
+<script>
+  document.addEventListener('keydown', function(e) {
+    // Disable F12
+    if (e.key === "F12") {
+      e.preventDefault();
+    }
+    // Disable Ctrl+Shift+I
+    if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+      e.preventDefault();
+    }
+    // Disable Ctrl+U (View source)
+    if (e.ctrlKey && e.key === 'u') {
+      e.preventDefault();
+    }
+  });
+</script>
+
 </body>
 
 <footer class="custom-footer">
