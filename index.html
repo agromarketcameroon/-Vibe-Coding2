@@ -102,10 +102,9 @@
     { name: 'Humidimètre intelligent', img: 'https://agromarketcameroon.com/images/hum1.jpg' },
     { name: 'pH Mètre des liquides', img: 'https://agromarketcameroon.com/images/phwt1.jpg' },
     { name: 'Fertilité 6-en-1', img: 'https://agromarketcameroon.com/images/phf1.jpg' },
-    // Repeat or add more to reach 50
+    // Add more up to 50 if needed
   ];
 
-  // Show toast with product info
   function showToast(product) {
     const toast = document.getElementById('notification-toast');
     document.getElementById('toast-img').src = product.img;
@@ -115,8 +114,8 @@
     toast.classList.remove('hidden');
     toast.classList.add('flex');
 
-    // Auto-hide after 6 seconds
-    setTimeout(() => hideToast(), 6000);
+    // Auto-hide after 4 seconds
+    setTimeout(() => hideToast(), 4000);
   }
 
   function hideToast() {
@@ -125,19 +124,18 @@
     toast.classList.remove('flex');
   }
 
-  // Randomly trigger a toast every 10-20 seconds
   function cycleToasts() {
-    const delay = Math.random() * (20000 - 10000) + 10000; // 10s to 20s
+    const delay = Math.floor(Math.random() * 5000) + 1000; // Random delay: 1s to 5s
     setTimeout(() => {
       const product = toastProducts[Math.floor(Math.random() * toastProducts.length)];
       showToast(product);
-      cycleToasts(); // Schedule next toast
+      cycleToasts(); // Schedule next
     }, delay);
   }
 
-  // Start the toast cycle
   document.addEventListener('DOMContentLoaded', cycleToasts);
 </script>
+
 </body>
 
 <footer class="custom-footer">
