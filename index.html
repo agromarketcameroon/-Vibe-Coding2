@@ -28,21 +28,81 @@
   </div>
 </nav>
 
-<div id="notification-toast" class="notification-toast hidden fixed bottom-4 left-4 bg-white shadow-lg rounded flex items-center p-3 z-50" data-toast style="max-width: 320px; font-family: 'Montserrat', sans-serif;">
-  <button class="toast-close-btn ml-auto text-gray-500" data-toast-close onclick="hideToast()">
-    ✕
-  </button>
-  <div class="toast-banner mr-3">
-    <img id="toast-img" src="" alt="Product Image" width="70" height="70" class="rounded" />
-  </div>
-  <div class="toast-detail text-sm">
-    <p class="toast-message text-gray-500 mb-1">Quelqu’un vient d’acheter</p>
-    <p id="toast-title" class="toast-title font-semibold text-black mb-1"></p>
-    <p class="toast-meta text-xs text-gray-400">
-      <time id="toast-time">il y a quelques secondes</time>
-    </p>
-  </div>
-</div>
+
+        <div id="amc-toast" class="amc-toast-hidden amc-toast-container">
+          <button class="amc-toast-close" onclick="amcHideToast()">✕</button>
+          <div class="amc-toast-image">
+            <img id="amc-toast-img" src="" alt="Product Image" />
+          </div>
+          <div class="amc-toast-content">
+            <p class="amc-toast-msg">Quelqu’un vient d’acheter</p>
+            <p id="amc-toast-title" class="amc-toast-title"></p>
+            <p class="amc-toast-time"><time id="amc-toast-time">il y a quelques secondes</time></p>
+          </div>
+        </div>
+        <style>
+          .amc-toast-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #dbeada;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            z-index: 9999;
+            font-family: 'Montserrat', sans-serif;
+            max-width: 320px;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            opacity: 1;
+            transform: translateY(0);
+          }
+
+          .amc-toast-hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+          }
+
+          .amc-toast-close {
+            background: none;
+            border: none;
+            font-size: 18px;
+            margin-left: auto;
+            color: #888;
+            cursor: pointer;
+          }
+
+          .amc-toast-image img {
+            width: 70px;
+            height: 70px;
+            border-radius: 6px;
+            object-fit: cover;
+            margin-right: 12px;
+          }
+
+          .amc-toast-content {
+            flex-grow: 1;
+            font-size: 14px;
+          }
+
+          .amc-toast-msg {
+            color: #666;
+            margin: 0;
+          }
+
+          .amc-toast-title {
+            font-weight: 600;
+            color: #222;
+            margin: 4px 0;
+          }
+
+          .amc-toast-time {
+            font-size: 12px;
+            color: #aaa;
+          }
+        </style>
 
   <!-- Product Section -->
   <div class="max-w-7xl mx-auto p-6">
@@ -95,46 +155,42 @@
 
   <script>
   // List of 50 fake purchased products
-  const toastProducts = [
-    { name: 'pH Mètre du sol 4-en-1', img: 'https://agromarketcameroon.com/images/phs1.jpg' },
-    { name: 'Analyseur NPK du sol', img: 'https://agromarketcameroon.com/images/npk1.jpg' },
-    { name: 'Testeur TDS/EC pour eau', img: 'https://agromarketcameroon.com/images/tdsec1.jpg' },
-    { name: 'Humidimètre intelligent', img: 'https://agromarketcameroon.com/images/hum1.jpg' },
-    { name: 'pH Mètre des liquides', img: 'https://agromarketcameroon.com/images/phwt1.jpg' },
-    { name: 'Fertilité 6-en-1', img: 'https://agromarketcameroon.com/images/phf1.jpg' },
-    // Add more up to 50 if needed
-  ];
+    const amcToastProducts = [
+      { name: 'pH Mètre du sol 4-en-1', img: 'https://agromarketcameroon.com/images/phs1.jpg' },
+      { name: 'Analyseur NPK du sol', img: 'https://agromarketcameroon.com/images/npk1.jpg' },
+      { name: 'Testeur TDS/EC pour eau', img: 'https://agromarketcameroon.com/images/tdsec1.jpg' },
+      { name: 'Humidimètre intelligent', img: 'https://agromarketcameroon.com/images/hum1.jpg' },
+      { name: 'pH Mètre des liquides', img: 'https://agromarketcameroon.com/images/phwt1.jpg' },
+      { name: 'Fertilité 6-en-1', img: 'https://agromarketcameroon.com/images/phf1.jpg' }
+    ];
 
-  function showToast(product) {
-    const toast = document.getElementById('notification-toast');
-    document.getElementById('toast-img').src = product.img;
-    document.getElementById('toast-title').textContent = product.name;
-    document.getElementById('toast-time').textContent = 'il y a quelques secondes';
+    function amcShowToast(product) {
+      const toast = document.getElementById('amc-toast');
+      document.getElementById('amc-toast-img').src = product.img;
+      document.getElementById('amc-toast-title').textContent = product.name;
+      document.getElementById('amc-toast-time').textContent = 'il y a quelques secondes';
 
-    toast.classList.remove('hidden');
-    toast.classList.add('flex');
+      toast.classList.remove('amc-toast-hidden');
 
-    // Auto-hide after 4 seconds
-    setTimeout(() => hideToast(), 4000);
-  }
+      setTimeout(() => amcHideToast(), 4000);
+    }
 
-  function hideToast() {
-    const toast = document.getElementById('notification-toast');
-    toast.classList.add('hidden');
-    toast.classList.remove('flex');
-  }
+    function amcHideToast() {
+      const toast = document.getElementById('amc-toast');
+      toast.classList.add('amc-toast-hidden');
+    }
 
-  function cycleToasts() {
-    const delay = Math.floor(Math.random() * 7000) + 2000; // Random delay: 1s to 5s
-    setTimeout(() => {
-      const product = toastProducts[Math.floor(Math.random() * toastProducts.length)];
-      showToast(product);
-      cycleToasts(); // Schedule next
-    }, delay);
-  }
+    function amcCycleToasts() {
+      const delay = Math.floor(Math.random() * 5000) + 2000; // 2s–7s
+      setTimeout(() => {
+        const product = amcToastProducts[Math.floor(Math.random() * amcToastProducts.length)];
+        amcShowToast(product);
+        amcCycleToasts();
+      }, delay);
+    }
 
-  document.addEventListener('DOMContentLoaded', cycleToasts);
-</script>
+    document.addEventListener('DOMContentLoaded', amcCycleToasts);
+  </script>
 
 <script>
   document.addEventListener('contextmenu', function(e) {
