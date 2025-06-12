@@ -63,6 +63,49 @@
 
   </header>
 
+  <script>
+  // List of 50 fake purchased products
+  const toastProducts = [
+    { name: 'pH Mètre du sol 4-en-1', img: 'https://agromarketcameroon.com/images/phs1.jpg' },
+    { name: 'Analyseur NPK du sol', img: 'https://agromarketcameroon.com/images/npk1.jpg' },
+    { name: 'Testeur TDS/EC pour eau', img: 'https://agromarketcameroon.com/images/tdsec1.jpg' },
+    { name: 'Humidimètre intelligent', img: 'https://agromarketcameroon.com/images/hum1.jpg' },
+    { name: 'pH Mètre des liquides', img: 'https://agromarketcameroon.com/images/phwt1.jpg' },
+    { name: 'Fertilité 6-en-1', img: 'https://agromarketcameroon.com/images/phf1.jpg' },
+    // Add more up to 50 if needed
+  ];
+
+  function showToast(product) {
+    const toast = document.getElementById('notification-toast');
+    document.getElementById('toast-img').src = product.img;
+    document.getElementById('toast-title').textContent = product.name;
+    document.getElementById('toast-time').textContent = 'il y a quelques secondes';
+
+    toast.classList.remove('hidden');
+    toast.classList.add('flex');
+
+    // Auto-hide after 4 seconds
+    setTimeout(() => hideToast(), 4000);
+  }
+
+  function hideToast() {
+    const toast = document.getElementById('notification-toast');
+    toast.classList.add('hidden');
+    toast.classList.remove('flex');
+  }
+
+  function cycleToasts() {
+    const delay = Math.floor(Math.random() * 5000) + 1000; // Random delay: 1s to 5s
+    setTimeout(() => {
+      const product = toastProducts[Math.floor(Math.random() * toastProducts.length)];
+      showToast(product);
+      cycleToasts(); // Schedule next
+    }, delay);
+  }
+
+  document.addEventListener('DOMContentLoaded', cycleToasts);
+</script>
+
 
   <!-- 
     - #MOBILE NAVBAR
@@ -307,6 +350,7 @@
     - custom js link
   <-->
   <script src="js/product.js" defer></script>
+  <script src="js/toastnotification.js" defer></script>
 
 </body>
 
