@@ -48,7 +48,7 @@
       products.forEach((p, index) => {
         const productPage = `product${index + 1}.html`;
         const message = encodeURIComponent(
-          `Salut AgroMarket, je suis intéressé par le produit suivant :\n\n- Nom : ${p.name}\n- Prix : ${p.price} FCFA\n\nMerci de me donner plus d’informations.\n\nConsultez nous produits ici\nwww.agromarketcameroon.com`
+          `Salut AgroMarket, je suis intéressé par le produit suivant :\n- Nom : ${p.name}\n- Prix : ${p.price} FCFA.\n\nConsultez nous produits ici:\nwww.agromarketcameroon.com`
         );
         const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
 
