@@ -381,6 +381,40 @@
     - custom js link
   <-->
   <script src="../js/product.js" defer></script>
+    
+  </script>
+
+  <audio id="bg-music" autoplay loop style="display:none">
+    <source src="assets/AgroMarket Nature Ambiance1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const audio = document.getElementById('bg-music');
+
+    let hasTriedToPlay = false;
+
+    function tryPlayAudio() {
+      if (hasTriedToPlay) return;
+      hasTriedToPlay = true;
+
+      audio.muted = false;
+      audio.volume = 0.5;
+
+      audio.play()
+        .then(() => {
+          console.log("Audio played on scroll.");
+        })
+        .catch(err => {
+          console.log("Autoplay still blocked:", err);
+        });
+    }
+
+    // Run only when scroll is initiated manually
+    window.addEventListener('scroll', () => {
+      setTimeout(tryPlayAudio, 50); // slight delay to ensure it's a user gesture
+    }, { once: true });
+  </script>
 
   <script>
     const amcToastProducts = [
