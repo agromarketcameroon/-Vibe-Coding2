@@ -8,23 +8,10 @@
 
 
 </head>
-<body>
 
 <body class="not-loaded">
-  
+
   <style>
-    /* Basic Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: montserrat, sans-serif;
-    }
-
-    /* Welcome Text Styling */
     .welcome-section {
       position: absolute;
       top: 30%;
@@ -33,62 +20,55 @@
       text-align: center;
       z-index: 1000;
       padding: 20px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
     }
 
-    .welcome-heading {
-      color: #14868f;
-      font-size: 6rem;
-      font-weight: 700;
-      margin-bottom: 30px;
+    .welcome-image-link img {
+      width: 120vw;
+      max-width: 480px;
+      height: auto;
+      display: block;
+      margin: 0 auto;margin-bottom: 25px;
+    }
+
+    @media (max-width: 480px) {
+      .welcome-image-link img {
+        width: 70vw;
+      }
     }
 
     .welcome-button {
-      padding: 18px 40px;
-      font-size: 3.5rem;
-      font-weight: bold;
-      border: none;
-      background-color: #85a00f;
-      color: white;
-      border-radius: 60px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
+  width: 400px;             /* fixed width */
+  height: 100px;             /* fixed height */
+  font-size: 2.5rem;        /* larger font */
+  padding: 0 10px;          /* horizontal padding */
+  cursor: pointer;
+  border: none;
+  background-color: #85a00f;
+  color: white;
+  border-radius: 75px;
+  transition: background-color 0.3s ease;
+  display: flex;            /* enable flexbox */
+  justify-content: center;  /* center horizontally */
+  align-items: center;      /* center vertically */
+  white-space: nowrap;      /* keep text on one line */
+  overflow: hidden;
+  text-overflow: ellipsis
     }
 
     .welcome-button:hover {
-      background-color: #218838;
-    }
-
-    @media (max-width: 600px) {
-      .welcome-heading {
-        font-size: 2rem;
-      }
-
-      .welcome-button {
-        font-size: 1.2rem;
-        padding: 14px 30px;
-      }
-    }
-
-    /* Flower animation placeholder */
-    .flowers {
-      position: relative;
-      z-index: 1;
-    }
-
-    .night {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(#1a1a1a, #000000);
-      z-index: 0;
+      background-color: #046662;
     }
   </style>
 
-  <!-- Welcome Message -->
   <div class="welcome-section">
-    <h1 class="welcome-heading">Bienvenue chez AgroMarket</h1>
+    <a href="shop.html" class="welcome-image-link">
+      <img src="images/AgroMarket.png" alt="Bienvenue chez AgroMarket" />
+    </a>
     <button class="welcome-button" onclick="window.location.href='shop.html'">
       Visitez la boutique
     </button>
@@ -392,7 +372,6 @@
       </div>
     </div>
   </div>
-</body>
 <!-- partial -->
   <script  src="js/home.js"></script>
 

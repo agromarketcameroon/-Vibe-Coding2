@@ -9,6 +9,27 @@
 :root {
   --dark-color: #000;
 }
+* {
+  transition: none !important;
+}
+html, body {
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  border: 2px solid red;  
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--dark-color);
+  overflow: hidden;
+  perspective: 1000px;
+  font-family: 'Montserrat', sans-serif;
+}
 
 body {
   display: flex;
@@ -18,6 +39,7 @@ body {
   background-color: var(--dark-color);
   overflow: hidden;
   perspective: 1000px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .night {
@@ -983,4 +1005,16 @@ body {
 }
 .not-loaded * {
   animation-play-state: paused !important;
+}
+
+.grow-ans,
+.flower__grass__leaf--2,
+.flower__grass__leaf--3,
+.flower__grass__leaf--4,
+.flower__grass__leaf--5,
+.flower__grass__leaf--6,
+.flower__grass__leaf--7,
+.flower__grass__leaf--8, {
+  animation: none !important;
+  transform: none !important;
 }
