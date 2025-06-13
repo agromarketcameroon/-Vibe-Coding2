@@ -161,24 +161,28 @@
   <script>
     const audio = document.getElementById('bg-music');
 
-    function playMusicOnScroll() {
+    let hasTriedToPlay = false;
+
+    function tryPlayAudio() {
+      if (hasTriedToPlay) return;
+      hasTriedToPlay = true;
+
       audio.muted = false;
       audio.volume = 0.5;
 
       audio.play()
         .then(() => {
-          console.log("Audio started on scroll.");
+          console.log("Audio played on scroll.");
         })
-        .catch((error) => {
-          console.log("Autoplay failed:", error);
+        .catch(err => {
+          console.log("Autoplay still blocked:", err);
         });
-
-      // Remove listener so it doesn't trigger again
-      window.removeEventListener('scroll', playMusicOnScroll);
     }
 
-    // Attach scroll event
-    window.addEventListener('scroll', playMusicOnScroll, { once: true });
+    // Run only when scroll is initiated manually
+    window.addEventListener('scroll', () => {
+      setTimeout(tryPlayAudio, 50); // slight delay to ensure it's a user gesture
+    }, { once: true });
   </script>
 
   <script>
