@@ -153,25 +153,32 @@
     });
   </script>
 
-  <audio id="bg-music" autoplay muted loop style="display:none">
+  <audio id="bg-music" autoplay loop style="display:none">
     <source src="assets/AgroMarket Nature Ambiance1.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
   <script>
     const audio = document.getElementById('bg-music');
-    audio.volume = 0.5;
 
-    // Try to unmute and play shortly after page loads
-    setTimeout(() => {
+    function playMusicOnScroll() {
       audio.muted = false;
-      audio.play().catch(() => {
-        // If it fails, listen for user interaction
-        document.addEventListener('click', () => {
-          audio.play();
-        }, { once: true });
-      });
-    }, 50); // wait 1 second before unmuting
+      audio.volume = 0.5;
+
+      audio.play()
+        .then(() => {
+          console.log("Audio started on scroll.");
+        })
+        .catch((error) => {
+          console.log("Autoplay failed:", error);
+        });
+
+      // Remove listener so it doesn't trigger again
+      window.removeEventListener('scroll', playMusicOnScroll);
+    }
+
+    // Attach scroll event
+    window.addEventListener('scroll', playMusicOnScroll, { once: true });
   </script>
 
   <script>
