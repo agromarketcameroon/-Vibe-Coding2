@@ -152,26 +152,26 @@
       });
     });
   </script>
-
-  <audio id="bg-music" autoplay muted loop style="display:none">
+  
+  <audio id="bg-music" loop>
     <source src="assets/AgroMarket Nature Ambiance1.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
   <script>
     const audio = document.getElementById('bg-music');
-    audio.volume = 0.5;
 
-    // Try to unmute and play shortly after page loads
-    setTimeout(() => {
-      audio.muted = false;
-      audio.play().catch(() => {
-        // If it fails, listen for user interaction
-        document.addEventListener('click', () => {
-          audio.play();
-        }, { once: true });
-      });
-    }, 1000); // wait 1 second before unmuting
+    function playMusic() {
+      audio.volume = 0.5;
+      audio.play().catch(() => {});
+      ['scroll', 'click', 'touchstart'].forEach(event =>
+        window.removeEventListener(event, playMusic)
+      );
+    }
+
+    ['scroll', 'click', 'touchstart'].forEach(event =>
+      window.addEventListener(event, playMusic, { once: true })
+    );
   </script>
 
   <script>
