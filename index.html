@@ -153,30 +153,26 @@
     });
   </script>
 
+  <audio id="bg-music" autoplay muted loop style="display:none">
+    <source src="assets/AgroMarket Nature Ambiance1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
-<audio id="bg-music" autoplay loop style="display:none">
-  <source src="assets/AgroMarket Nature Ambiance1.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
+  <script>
     const audio = document.getElementById('bg-music');
-    audio.volume = 0.5; // optional: set volume level (0.0 to 1.0)
+    audio.volume = 0.5;
 
-    // Some browsers require user interaction, this workaround tries to force play
-    const playAudio = () => {
-      audio.play().catch(() => {});
-    };
-
-    playAudio();
-
-    // Retry on interaction if autoplay was blocked
-    document.addEventListener('click', playAudio, { once: true });
-  });
-</script>
-
-  
+    // Try to unmute and play shortly after page loads
+    setTimeout(() => {
+      audio.muted = false;
+      audio.play().catch(() => {
+        // If it fails, listen for user interaction
+        document.addEventListener('click', () => {
+          audio.play();
+        }, { once: true });
+      });
+    }, 1000); // wait 1 second before unmuting
+  </script>
 
   <script>
     const amcToastProducts = [
