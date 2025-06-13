@@ -127,7 +127,7 @@
       const grid = document.getElementById('product-grid');
 
       products.forEach((p, index) => {
-        const productPage = `/shop/p${index + 1}.html`;
+        const productPage = `shop/p${index + 1}.html`;
         const message = encodeURIComponent(
           `Salut *AgroMarket!*\n\n    Je veux acheter le produit *${p.name}* qui coûte *${p.price}FCFA.*`
         );
