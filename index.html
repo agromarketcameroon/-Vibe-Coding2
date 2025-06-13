@@ -9,70 +9,84 @@
 
 </head>
 
-<body class="not-loaded">
+<body class="not-loaded"><style>
+  .welcome-section {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1000;
+    padding: 20px;
 
-  <style>
-    .welcome-section {
-      position: absolute;
-      top: 30%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      z-index: 1000;
-      padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
 
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
+  .welcome-image-link img,
+  .welcome-button {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 2.5s ease forwards;
+    animation-delay: 2.5s;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
+  }
 
+  .welcome-image-link img {
+    width: 120vw;
+    max-width: 480px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 25px;
+  }
+
+  @media (max-width: 480px) {
     .welcome-image-link img {
-      width: 120vw;
-      max-width: 480px;
-      height: auto;
-      display: block;
-      margin: 0 auto;margin-bottom: 25px;
+      width: 70vw;
     }
+  }
 
-    @media (max-width: 480px) {
-      .welcome-image-link img {
-        width: 70vw;
-      }
-    }
+  .welcome-button {
+    width: 600px;
+    height: 100px;
+    font-size: 2.5rem;
+    padding: 0 20px;
+    cursor: pointer;
+    border: none;
+    background-color: #85a00f;
+    color: white;
+    border-radius: 75px;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
-    .welcome-button {
-  width: 400px;             /* fixed width */
-  height: 100px;             /* fixed height */
-  font-size: 2.5rem;        /* larger font */
-  padding: 0 10px;          /* horizontal padding */
-  cursor: pointer;
-  border: none;
-  background-color: #85a00f;
-  color: white;
-  border-radius: 75px;
-  transition: background-color 0.3s ease;
-  display: flex;            /* enable flexbox */
-  justify-content: center;  /* center horizontally */
-  align-items: center;      /* center vertically */
-  white-space: nowrap;      /* keep text on one line */
-  overflow: hidden;
-  text-overflow: ellipsis
-    }
+  .welcome-button:hover {
+    background-color: #85a00f;
+  }
+</style>
 
-    .welcome-button:hover {
-      background-color: #85a00f;
-    }
-  </style>
-
-  <div class="welcome-section">
-    <a href="shop.html" class="welcome-image-link">
-      <img src="images/AgroMarket.png" alt="Bienvenue chez AgroMarket" />
-    </a>
-    <button class="welcome-button" onclick="window.location.href='shop.html'">
-      Visitez la boutique
-    </button>
-  </div>
+<div class="welcome-section">
+  <a href="shop.html" class="welcome-image-link">
+    <img src="images/AgroMarket.png" alt="Bienvenue chez AgroMarket" />
+  </a>
+  <button class="welcome-button" onclick="window.location.href='shop.html'">
+    Découvrez nos offres !
+  </button>
+</div>
 
 
   <div class="night"></div>
