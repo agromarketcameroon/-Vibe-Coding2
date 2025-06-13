@@ -1,406 +1,400 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shop - AgroMarket</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>AgroMarket Cameroon</title>
+  <link rel="stylesheet" href="css/home.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
 
-  <!-- 
-    - favicon
-  -->
-  <link rel="shortcut icon" href="images/AMfavicon.svg" type="image/svg+xml">
 </head>
-<body class="bg-white text-gray-800" style="background-color: rgb(223, 238, 222) !important;">
+<body>
 
+<body class="not-loaded">
   
-<!-- Navbar with Centered Logo and Sticky Behavior -->
-<nav class="bg-green-700 text-white shadow-md sticky top-0 z-50" style="padding: 0.8rem 0; background-color: #333333 !important;">
-  <div class="max-w-7xl mx-auto flex flex-col items-center justify-center text-center">
-    
-    <!-- Logo and Brand Name -->
-    <a href="index.html" class="flex flex-col items-center space-y-2">
-      <img src="images/logo.png" alt="AgroMarket Logo"
-           style="height: 40px; width: auto;" class="object-contain" />
-    </a>
-  </div>
-</nav>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      font-family: montserrat, sans-serif;
+    }
 
-        <div id="amc-toast" class="amc-toast-hidden amc-toast-container">
-          <button class="amc-toast-close" onclick="amcHideToast()">✕</button>
-          <div class="amc-toast-image">
-            <img id="amc-toast-img" src="" alt="Product Image" />
-          </div>
-          <div class="amc-toast-content">
-            <p class="amc-toast-msg">Quelqu’un vient d’acheter</p>
-            <p id="amc-toast-title" class="amc-toast-title"></p>
-            <p class="amc-toast-time"><time id="amc-toast-time">il y a quelques secondes</time></p>
-          </div>
-        </div>
-        <style>
-          .amc-toast-container {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: #dbeada;
-            border-radius: 8px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            display: flex;
-            align-items: center;
-            padding: 12px;
-            z-index: 9999;
-            font-family: 'Montserrat', sans-serif;
-            max-width: 320px;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            opacity: 1;
-            transform: translateY(0);
-          }
+    /* Welcome Text Styling */
+    .welcome-section {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 1000;
+      padding: 20px;
+    }
 
-          .amc-toast-hidden {
-            opacity: 0;
-            transform: translateY(20px);
-            pointer-events: none;
-          }
+    .welcome-heading {
+      color: #14868f;
+      font-size: 6rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+    }
 
-          .amc-toast-close {
-            background: none;
-            border: none;
-            font-size: 18px;
-            margin-left: auto;
-            color: #888;
-            cursor: pointer;
-          }
+    .welcome-button {
+      padding: 18px 40px;
+      font-size: 3.5rem;
+      font-weight: bold;
+      border: none;
+      background-color: #85a00f;
+      color: white;
+      border-radius: 60px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-          .amc-toast-image img {
-            width: 70px;
-            height: 70px;
-            border-radius: 6px;
-            object-fit: cover;
-            margin-right: 12px;
-          }
+    .welcome-button:hover {
+      background-color: #218838;
+    }
 
-          .amc-toast-content {
-            flex-grow: 1;
-            font-size: 14px;
-          }
+    @media (max-width: 600px) {
+      .welcome-heading {
+        font-size: 2rem;
+      }
 
-          .amc-toast-msg {
-            color: #666;
-            margin: 0;
-          }
+      .welcome-button {
+        font-size: 1.2rem;
+        padding: 14px 30px;
+      }
+    }
 
-          .amc-toast-title {
-            font-weight: 600;
-            color: #222;
-            margin: 4px 0;
-          }
+    /* Flower animation placeholder */
+    .flowers {
+      position: relative;
+      z-index: 1;
+    }
 
-          .amc-toast-time {
-            font-size: 12px;
-            color: #aaa;
-          }
-        </style>
+    .night {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(#1a1a1a, #000000);
+      z-index: 0;
+    }
+  </style>
 
-  <!-- Product Section -->
-  <div class="max-w-7xl mx-auto p-6">
-    <h2 class="text-3xl font-bold mb-6 text-center" style="font-family: 'Montserrat', sans-serif !important;">Bienvenue dans votre boutique Agricole!</h2>
-    <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  <!-- Welcome Message -->
+  <div class="welcome-section">
+    <h1 class="welcome-heading">Bienvenue chez AgroMarket</h1>
+    <button class="welcome-button" onclick="window.location.href='shop.html'">
+      Visitez la boutique
+    </button>
   </div>
 
-  <!-- Product Script -->
-  <script>
-    const products = [
-      { name: 'pH Mètre du sol 4-en-1', price: 12500, img: 'phs1.jpg' },
-      { name: 'Analyses Fertilité du sol 6-en-1', price: 24900, img: 'phf1.jpg' },
-      { name: 'Analyses NPK du sol', price: 34900, img: 'npk1.jpg' },
-      { name: 'TDS/EC pour eau', price: 10000, img: 'tdsec1.jpg' },
-      { name: 'Humidimetre', price: 24900, img: 'hum1.jpg' },
-      { name: 'pH Mètre des liquides', price: 10000, img: 'phwt1.jpg' }
-    ];
 
-    const whatsappNumber = '237671357556'; // Replace with your actual WhatsApp number
+  <div class="night"></div>
+  <div class="flowers">
+    <div class="flower flower--1">
+      <div class="flower__leafs flower__leafs--1">
+        <div class="flower__leaf flower__leaf--1"></div>
+        <div class="flower__leaf flower__leaf--2"></div>
+        <div class="flower__leaf flower__leaf--3"></div>
+        <div class="flower__leaf flower__leaf--4"></div>
+        <div class="flower__white-circle"></div>
 
-    document.addEventListener('DOMContentLoaded', () => {
-      const grid = document.getElementById('product-grid');
+        <div class="flower__light flower__light--1"></div>
+        <div class="flower__light flower__light--2"></div>
+        <div class="flower__light flower__light--3"></div>
+        <div class="flower__light flower__light--4"></div>
+        <div class="flower__light flower__light--5"></div>
+        <div class="flower__light flower__light--6"></div>
+        <div class="flower__light flower__light--7"></div>
+        <div class="flower__light flower__light--8"></div>
 
-      products.forEach((p, index) => {
-        const productPage = `shop/p${index + 1}.html`;
-        const message = encodeURIComponent(
-          `Salut *AgroMarket!*\n\n    Je veux acheter le produit *${p.name}* qui coûte *${p.price}FCFA.*`
-        );
-        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
-
-        const div = document.createElement('div');
-        div.className = "bg-white shadow p-4 rounded";
-
-        div.innerHTML = `
-          <img src="images/${p.img}" class="w-full h-40 object-cover mb-3" />
-          <h3 class="font-semibold text-lg" style="font-family: 'Montserrat', sans-serif !important;">${p.name}</h3>
-          <p style="font-family: 'Montserrat', sans-serif !important;">${p.price} FCFA</p>
-          <a href="${whatsappURL}" target="_self" class="mt-2 inline-block bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700" style="background-color: #29AF3E; font-family: 'Montserrat', sans-serif !important; border-radius: 25px; margin-bottom: 15px;">
-            Commander via WhatsApp
-          </a>
-          <a href="${productPage}" target="_self" class="mt-2 inline-block bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700" style="background-color: #fa8e00; font-family: 'Montserrat', sans-serif !important; border-radius: 25px; margin: auto;">
-            En savoir plus
-          </a>
-        `;
-
-        grid.appendChild(div);
-      });
-    });
-  </script>
-
-  <audio id="bg-music" autoplay loop style="display:none">
-    <source src="assets/AgroMarket Nature Ambiance1.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-
-  <script>
-    const audio = document.getElementById('bg-music');
-
-    let hasTriedToPlay = false;
-
-    function tryPlayAudio() {
-      if (hasTriedToPlay) return;
-      hasTriedToPlay = true;
-
-      audio.muted = false;
-      audio.volume = 0.5;
-
-      audio.play()
-        .then(() => {
-          console.log("Audio played on scroll.");
-        })
-        .catch(err => {
-          console.log("Autoplay still blocked:", err);
-        });
-    }
-
-    // Run only when scroll is initiated manually
-    window.addEventListener('scroll', () => {
-      setTimeout(tryPlayAudio, 50); // slight delay to ensure it's a user gesture
-    }, { once: true });
-  </script>
-
-  <script>
-    const amcToastProducts = [
-      { name: 'pH Mètre du sol 4-en-1', img: 'https://agromarketcameroon.com/images/phs1.jpg' },
-      { name: 'Analyseur NPK du sol', img: 'https://agromarketcameroon.com/images/npk1.jpg' },
-      { name: 'Testeur TDS/EC pour eau', img: 'https://agromarketcameroon.com/images/tdsec1.jpg' },
-      { name: 'Humidimètre intelligent', img: 'https://agromarketcameroon.com/images/hum1.jpg' },
-      { name: 'pH Mètre des liquides', img: 'https://agromarketcameroon.com/images/phwt1.jpg' },
-      { name: 'Fertilité 6-en-1', img: 'https://agromarketcameroon.com/images/phf1.jpg' }
-    ];
-
-    function amcShowToast(product) {
-      const toast = document.getElementById('amc-toast');
-      document.getElementById('amc-toast-img').src = product.img;
-      document.getElementById('amc-toast-title').textContent = product.name;
-      document.getElementById('amc-toast-time').textContent = 'il y a quelques secondes';
-
-      toast.classList.remove('amc-toast-hidden');
-
-      setTimeout(() => amcHideToast(), 2500);
-    }
-
-    function amcHideToast() {
-      const toast = document.getElementById('amc-toast');
-      toast.classList.add('amc-toast-hidden');
-    }
-
-    function amcCycleToasts() {
-      const delay = Math.floor(Math.random() * 10000) + 3000; // 3s–10s
-      setTimeout(() => {
-        const product = amcToastProducts[Math.floor(Math.random() * amcToastProducts.length)];
-        amcShowToast(product);
-        amcCycleToasts();
-      }, delay);
-    }
-
-    document.addEventListener('DOMContentLoaded', amcCycleToasts);
-  </script>
-
-<script>
-  document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
-  });
-</script>
-
-<script>
-  document.addEventListener('keydown', function(e) {
-    // Disable F12
-    if (e.key === "F12") {
-      e.preventDefault();
-    }
-    // Disable Ctrl+Shift+I
-    if (e.ctrlKey && e.shiftKey && e.key === 'I') {
-      e.preventDefault();
-    }
-    // Disable Ctrl+U (View source)
-    if (e.ctrlKey && e.key === 'u') {
-      e.preventDefault();
-    }
-  });
-</script>
-
-</body>
-
-<footer class="custom-footer">
-  <div class="footer-container">
-    <!-- Footer Columns -->
-    <div class="footer-columns">
-      <!-- Column 1: Logo, Description, and Social Media -->
-      <div class="footer-column footer-logo-column">
-        <a href="/" class="footer-logo-link">
-          <img src="https://cdn.shopify.com/s/files/1/0627/2280/1754/files/Shopify_Footer_Logo.png?v=1733529467" alt="AgroMarket Logo" class="footer-logo">
-        </a>
-        <p class="footer-description" style="color: #85a00f; font-family: 'Montserrat', sans-serif !important; font-size: 18px;">AgroMarket se consacre à fournir des équipements agricoles innovants et durables aux agriculteurs du monde entier.</p>
-        <p style="font-family: 'Montserrat', sans-serif !important;">
-          Tel: <a href="tel:+237671357556" style="color: #FA8E00; text-decoration: underline;">(+237) 671 357 556</a>
-        </p>
-        <p style="font-family: 'Montserrat', sans-serif !important;">Super U Bonamoussadi, Douala</p><br>
-        <p style="font-family: 'Montserrat', sans-serif !important; color: #85a00f;">© 2025 AgroMarket Cameroon. Tous droits réservés.</p><br>
-    </div>
+      </div>
+      <div class="flower__line">
+        <div class="flower__line__leaf flower__line__leaf--1"></div>
+        <div class="flower__line__leaf flower__line__leaf--2"></div>
+        <div class="flower__line__leaf flower__line__leaf--3"></div>
+        <div class="flower__line__leaf flower__line__leaf--4"></div>
+        <div class="flower__line__leaf flower__line__leaf--5"></div>
+        <div class="flower__line__leaf flower__line__leaf--6"></div>
       </div>
     </div>
 
-    <!-- Footer Bottom -->
+    <div class="flower flower--2">
+      <div class="flower__leafs flower__leafs--2">
+        <div class="flower__leaf flower__leaf--1"></div>
+        <div class="flower__leaf flower__leaf--2"></div>
+        <div class="flower__leaf flower__leaf--3"></div>
+        <div class="flower__leaf flower__leaf--4"></div>
+        <div class="flower__white-circle"></div>
+
+        <div class="flower__light flower__light--1"></div>
+        <div class="flower__light flower__light--2"></div>
+        <div class="flower__light flower__light--3"></div>
+        <div class="flower__light flower__light--4"></div>
+        <div class="flower__light flower__light--5"></div>
+        <div class="flower__light flower__light--6"></div>
+        <div class="flower__light flower__light--7"></div>
+        <div class="flower__light flower__light--8"></div>
+
+      </div>
+      <div class="flower__line">
+        <div class="flower__line__leaf flower__line__leaf--1"></div>
+        <div class="flower__line__leaf flower__line__leaf--2"></div>
+        <div class="flower__line__leaf flower__line__leaf--3"></div>
+        <div class="flower__line__leaf flower__line__leaf--4"></div>
+      </div>
+    </div>
+
+    <div class="flower flower--3">
+      <div class="flower__leafs flower__leafs--3">
+        <div class="flower__leaf flower__leaf--1"></div>
+        <div class="flower__leaf flower__leaf--2"></div>
+        <div class="flower__leaf flower__leaf--3"></div>
+        <div class="flower__leaf flower__leaf--4"></div>
+        <div class="flower__white-circle"></div>
+
+        <div class="flower__light flower__light--1"></div>
+        <div class="flower__light flower__light--2"></div>
+        <div class="flower__light flower__light--3"></div>
+        <div class="flower__light flower__light--4"></div>
+        <div class="flower__light flower__light--5"></div>
+        <div class="flower__light flower__light--6"></div>
+        <div class="flower__light flower__light--7"></div>
+        <div class="flower__light flower__light--8"></div>
+
+      </div>
+      <div class="flower__line">
+        <div class="flower__line__leaf flower__line__leaf--1"></div>
+        <div class="flower__line__leaf flower__line__leaf--2"></div>
+        <div class="flower__line__leaf flower__line__leaf--3"></div>
+        <div class="flower__line__leaf flower__line__leaf--4"></div>
+      </div>
+    </div>
+
+    <div class="grow-ans" style="--d:1.2s">
+      <div class="flower__g-long">
+        <div class="flower__g-long__top"></div>
+        <div class="flower__g-long__bottom"></div>
+      </div>
+    </div>
+
+    <div class="growing-grass">
+      <div class="flower__grass flower__grass--1">
+        <div class="flower__grass--top"></div>
+        <div class="flower__grass--bottom"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--1"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--2"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--3"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--4"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--5"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--6"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--7"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--8"></div>
+        <div class="flower__grass__overlay"></div>
+      </div>
+    </div>
+
+    <div class="growing-grass">
+      <div class="flower__grass flower__grass--2">
+        <div class="flower__grass--top"></div>
+        <div class="flower__grass--bottom"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--1"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--2"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--3"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--4"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--5"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--6"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--7"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--8"></div>
+        <div class="flower__grass__overlay"></div>
+      </div>
+    </div>
+
+    <div class="grow-ans" style="--d:2.4s">
+      <div class="flower__g-right flower__g-right--1">
+        <div class="leaf"></div>
+      </div>
+    </div>
+
+    <div class="grow-ans" style="--d:2.8s">
+      <div class="flower__g-right flower__g-right--2">
+        <div class="leaf"></div>
+      </div>
+    </div>
+
+    <div class="grow-ans" style="--d:2.8s">
+      <div class="flower__g-front">
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--1">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--2">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--3">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--4">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--5">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--6">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--7">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--8">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__line"></div>
+      </div>
+    </div>
+
+    <div class="grow-ans" style="--d:3.2s">
+      <div class="flower__g-fr">
+        <div class="leaf"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--1"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--2"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--3"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--4"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--5"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--6"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--7"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--8"></div>
+      </div>
+    </div>
+
+    <div class="long-g long-g--0">
+      <div class="grow-ans" style="--d:3s">
+        <div class="leaf leaf--0"></div>
+      </div>
+      <div class="grow-ans" style="--d:2.2s">
+        <div class="leaf leaf--1"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.4s">
+        <div class="leaf leaf--2"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.6s">
+        <div class="leaf leaf--3"></div>
+      </div>
+    </div>
+
+    <div class="long-g long-g--1">
+      <div class="grow-ans" style="--d:3.6s">
+        <div class="leaf leaf--0"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.8s">
+        <div class="leaf leaf--1"></div>
+      </div>
+      <div class="grow-ans" style="--d:4s">
+        <div class="leaf leaf--2"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.2s">
+        <div class="leaf leaf--3"></div>
+      </div>
+    </div>
+
+    <div class="long-g long-g--2">
+      <div class="grow-ans" style="--d:4s">
+        <div class="leaf leaf--0"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.2s">
+        <div class="leaf leaf--1"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.4s">
+        <div class="leaf leaf--2"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.6s">
+        <div class="leaf leaf--3"></div>
+      </div>
+    </div>
+
+    <div class="long-g long-g--3">
+      <div class="grow-ans" style="--d:4s">
+        <div class="leaf leaf--0"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.2s">
+        <div class="leaf leaf--1"></div>
+      </div>
+      <div class="grow-ans" style="--d:3s">
+        <div class="leaf leaf--2"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.6s">
+        <div class="leaf leaf--3"></div>
+      </div>
+    </div>
+
+    <div class="long-g long-g--4">
+      <div class="grow-ans" style="--d:4s">
+        <div class="leaf leaf--0"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.2s">
+        <div class="leaf leaf--1"></div>
+      </div>
+      <div class="grow-ans" style="--d:3s">
+        <div class="leaf leaf--2"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.6s">
+        <div class="leaf leaf--3"></div>
+      </div>
+    </div>
+
+    <div class="long-g long-g--5">
+      <div class="grow-ans" style="--d:4s">
+        <div class="leaf leaf--0"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.2s">
+        <div class="leaf leaf--1"></div>
+      </div>
+      <div class="grow-ans" style="--d:3s">
+        <div class="leaf leaf--2"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.6s">
+        <div class="leaf leaf--3"></div>
+      </div>
+    </div>
+
+    <div class="long-g long-g--6">
+      <div class="grow-ans" style="--d:4.2s">
+        <div class="leaf leaf--0"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.4s">
+        <div class="leaf leaf--1"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.6s">
+        <div class="leaf leaf--2"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.8s">
+        <div class="leaf leaf--3"></div>
+      </div>
+    </div>
+
+    <div class="long-g long-g--7">
+      <div class="grow-ans" style="--d:3s">
+        <div class="leaf leaf--0"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.2s">
+        <div class="leaf leaf--1"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.5s">
+        <div class="leaf leaf--2"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.6s">
+        <div class="leaf leaf--3"></div>
+      </div>
+    </div>
   </div>
-</footer>
+</body>
+<!-- partial -->
+  <script  src="js/home.js"></script>
 
-<style>
-  /* Footer Styling */
-  .custom-footer {
-    background-color: #333;
-    padding: 40px 20px;
-    color: white;
-  }
-
-  .footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-
-  .footer-columns {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    width: 100%;
-  }
-
-  .footer-column {
-    flex: 1;
-    min-width: 200px;
-  }
-
-  .footer-logo-column {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .footer-logo-link {
-    display: inline-block;
-  }
-
-  .footer-logo {
-    max-width: 200px; /* Larger size */
-    width: 100%;
-    margin-bottom: 15px;
-  }
-
-  .footer-description {
-    font-size: 14px;
-    line-height: 1.6;
-    color: white;
-    margin-bottom: 20px;
-  }
-
-  .social-media {
-    display: flex;
-    gap: 30px;
-    margin-bottom: 5px;
-  }
-
-  .social-icon img {
-    width: 50px;
-    height: 50px;
-    transition: transform 0.3s ease;
-  }
-
-  .social-icon img:hover {
-    transform: scale(1.1);
-  }
-
-  .cta {
-    font-size: 16px;
-    font-weight: bold;
-    color: #85a00f;
-  }
-
-  .footer-column h4 {
-    font-size: 18px;
-    margin-bottom: 15px;
-  }
-
-  .footer-column ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .footer-column ul li {
-    margin-bottom: 5px;
-  }
-
-  .footer-column ul li a {
-    text-decoration: none;
-    color: #85a00f;
-    transition: color 0.3s ease;
-  }
-
-  .footer-column ul li a:hover {
-    color: #c0d000;
-  }
-
-  .footer-bottom {
-    text-align: center !important;
-    margin-top: 20px;
-    width: 100%;
-  }
-
-  .footer-bottom p {
-    margin: 0;
-    font-size: 14px;
-    color: white;
-  }
-
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .footer-columns {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .footer-column {
-      min-width: unset;
-      text-align: center;
-    }
-
-    .footer-bottom {
-      margin-top: 20px;
-    }
-  }
-</style>
-
-
-
+</body>
 </html>
