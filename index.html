@@ -25,12 +25,18 @@
     gap: 1rem;
   }
 
-  .welcome-image-link img,
-  .welcome-button {
+  .welcome-image-link img {
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 2.5s ease forwards;
     animation-delay: 2.5s;
+  }
+
+  .welcome-button {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 2s ease forwards;
+    animation-delay: 3.5s;
   }
 
   @keyframes fadeInUp {
