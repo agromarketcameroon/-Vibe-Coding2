@@ -115,8 +115,7 @@
   <main>
       <!-- 
         - #OFFER
-      -->
-        <div id="amc-toast" class="amc-toast-hidden amc-toast-container">
+      --> <div id="amc-toast" class="amc-toast-hidden amc-toast-container">
           <button class="amc-toast-close" onclick="amcHideToast()">✕</button>
           <div class="amc-toast-image">
             <img id="amc-toast-img" src="" alt="Product Image" />
@@ -127,12 +126,14 @@
             <p class="amc-toast-time"><time id="amc-toast-time">il y a quelques secondes</time></p>
           </div>
         </div>
+
+      <audio id="toast-sound" src="assets/purchasesound.ogg" preload="auto"></audio>
         <style>
           .amc-toast-container {
             position: fixed;
             bottom: 20px;
             left: 20px;
-            background: #dfeede;
+            background: #dbeada;
             border-radius: 8px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.15);
             display: flex;
@@ -380,9 +381,8 @@
       
     - custom js link
   <-->
-  <script src="../js/product.js" defer>
+  <script src="../js/product.js" defer></script>
 
-  </script>
 
   <audio id="bg-music" autoplay loop style="display:none">
     <source src="../assets/p1.mp3" type="audio/mpeg">

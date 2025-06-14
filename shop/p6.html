@@ -115,8 +115,7 @@
   <main>
       <!-- 
         - #OFFER
-      -->
-        <div id="amc-toast" class="amc-toast-hidden amc-toast-container">
+      --> <div id="amc-toast" class="amc-toast-hidden amc-toast-container">
           <button class="amc-toast-close" onclick="amcHideToast()">✕</button>
           <div class="amc-toast-image">
             <img id="amc-toast-img" src="" alt="Product Image" />
@@ -127,12 +126,14 @@
             <p class="amc-toast-time"><time id="amc-toast-time">il y a quelques secondes</time></p>
           </div>
         </div>
+
+      <audio id="toast-sound" src="assets/purchasesound.ogg" preload="auto"></audio>
         <style>
           .amc-toast-container {
             position: fixed;
             bottom: 20px;
             left: 20px;
-            background: #dfeede;
+            background: #dbeada;
             border-radius: 8px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.15);
             display: flex;
@@ -476,11 +477,19 @@
 
     function amcShowToast(product) {
       const toast = document.getElementById('amc-toast');
+      const sound = document.getElementById('toast-sound');
       document.getElementById('amc-toast-img').src = product.img;
       document.getElementById('amc-toast-title').textContent = product.name;
       document.getElementById('amc-toast-time').textContent = 'il y a quelques secondes';
 
-      toast.classList.remove('amc-toast-hidden');
+      toast.classList.remove('amc-toast-hidden'); 
+      
+          // Play sound from the start
+      if (sound) {
+        sound.volume = 0.3;
+        sound.currentTime = 0;
+        sound.play();
+      }
 
       setTimeout(() => amcHideToast(), 2500);
     }
@@ -501,6 +510,12 @@
 
     document.addEventListener('DOMContentLoaded', amcCycleToasts);
   </script>
+
+<script>
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+</script>
 
 
 <script>
