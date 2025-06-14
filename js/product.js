@@ -77,34 +77,6 @@ const headerSticky = function () {
 addEventOnElem(window, "scroll", headerSticky);
 
 
-/**
- * Google Tag Manager
- */
-
-window.dataLayer = window.dataLayer || [];
-function gtag() { dataLayer.push(arguments); }
-
-(function () {
-  var gaScript = document.createElement('script');
-  gaScript.async = true;
-  gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-VPQVZKJGJ6';
-  document.head.appendChild(gaScript);
-
-  gtag('js', new Date());
-  gtag('config', 'G-VPQVZKJGJ6');
-
-  // Custom anti-copy event
-  window.addEventListener("DOMContentLoaded", function () {
-    gtag('event', 'hidden_ping', {
-      'event_category': 'AntiCopy',
-      'event_label': 'Hidden Tracker Loaded',
-      'non_interaction': true
-    });
-  });
-})();
-
-
-
 
 /**
  * scroll reveal effect

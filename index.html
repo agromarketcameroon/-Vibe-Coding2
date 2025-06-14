@@ -392,7 +392,23 @@
     </div>
   </div>
 <!-- partial -->
-  <script src="js/product.js" defer></script>
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VPQVZKJGJ6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VPQVZKJGJ6');
+
+  // Hidden tracking event — helps detect stolen copies of your site
+  window.addEventListener("DOMContentLoaded", function () {
+    gtag('event', 'hidden_ping', {
+      'event_category': 'AntiCopy',
+      'event_label': window.location.hostname
+    });
+  });
+</script>
   <script  src="js/home.js"></script>
 
 </body>
