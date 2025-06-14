@@ -40,6 +40,8 @@
             <p class="amc-toast-time"><time id="amc-toast-time">il y a quelques secondes</time></p>
           </div>
         </div>
+
+      <audio id="toast-sound" src="assets/purchasesound.ogg" preload="auto"></audio>
         <style>
           .amc-toast-container {
             position: fixed;
@@ -197,11 +199,18 @@
 
     function amcShowToast(product) {
       const toast = document.getElementById('amc-toast');
+      const sound = document.getElementById('toast-sound');
       document.getElementById('amc-toast-img').src = product.img;
       document.getElementById('amc-toast-title').textContent = product.name;
       document.getElementById('amc-toast-time').textContent = 'il y a quelques secondes';
 
-      toast.classList.remove('amc-toast-hidden');
+      toast.classList.remove('amc-toast-hidden'); 
+      
+          // Play sound from the start
+      if (sound) {
+        sound.currentTime = 0;
+        sound.play();
+      }
 
       setTimeout(() => amcHideToast(), 2500);
     }
